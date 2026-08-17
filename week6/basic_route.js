@@ -1,7 +1,9 @@
 const express=require('express');
 const app=express();
 const PORT=5000;
-app.get("/", (req, res) => { res.send("<h1>Welcome to Student Application</h1>"); }); 
+app.get("/", (req, res) => { 
+ res.send("<h1>Welcome to Student Application</h1>"); 
+}); 
  
 app.get("/student", (req, res) => { 
     res.send("<h1>Student Name: Rahul, Roll No: 101, Department: CSE</h1>"); 
