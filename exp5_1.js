@@ -1,20 +1,16 @@
 const express = require("express");
 const app = express();
-const PORT = 3000;
 app.get("/", (req, res) => {
-    res.send("Welcome SVECW! You have reached the Home Page.");
+  res.send("Welcome to Express Server");
 });
 app.get("/about", (req, res) => {
-    res.send("This server was built as a learning exercise for Express.js by SVECW AI Department.");
+  res.send("This is About Page");
 });
-app.get("/api/status", (req, res) => {
-    res.json({
-        active: true,
-        version: "1.0.0",
-        message: "The server is healthy and responding!"
-    });
+app.get("/users/:id", (req, res) => {
+  const id = req.params.id;
+
+  res.send(`User ID is: ${id}`);
 });
-app.listen(PORT, () => {
-    console.log(`Success! Server is running at http://localhost:${PORT}`);
-    console.log("Press Ctrl+C to stop server.");
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
 });
