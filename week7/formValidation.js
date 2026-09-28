@@ -1,10 +1,5 @@
-// Week 7 - Lab 7
-// iii) Accept form inputs
-// iv) Perform basic validation
-
 const express = require("express");
 const path = require("path");
-
 const app = express();
 const PORT = 3004;
 
@@ -30,29 +25,24 @@ app.post("/register", (req, res) => {
         course: (course || "").trim()
     };
     const errors = [];
-
-    if (!values.name) {
+    if(!values.name){
         errors.push("Name is required.");
     }
-
-    if (!values.email) {
+    if(!values.email){
         errors.push("Email is required.");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
         errors.push("Enter a valid email address.");
     }
-
-    if (!values.course) {
+    if(!values.course){
         errors.push("Course is required.");
     }
-
-    if (errors.length > 0) {
+    if (errors.length > 0){
         return res.status(400).render("register", {
             title: "Student Registration",
             errors,
             values
         });
     }
-
     res.render("success", {
         title: "Registration Successful",
         student: values
